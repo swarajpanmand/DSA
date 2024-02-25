@@ -5,10 +5,12 @@ class Node{
 public:
     int data;
     Node* next;
+    Node* prev;
 
     Node(int data){
         this->data= data;
         next = NULL;
+        prev =NULL;
     }
 };
 
@@ -20,27 +22,27 @@ public:
         head =NULL;
     }
 
-    void reverse() {
-    Node* current = head;
-    Node* prev = NULL;
-    Node* next = NULL;
+    void reverse(){
+        Node* current = head;
+        Node* prev = NULL;
+        Node* next = NULL;
 
-    while (current != NULL) {
-        next = current->next;
-        current->next = prev;
-        prev = current;
-        current = next;
+        while(current->next != NULL){
+            next = current->next;
+            current->next = prev;
+            prev =current;
+            current = next;
+        }
+        head = prev;
     }
-    head = prev;
-}
-
 
     void display() {
     Node* temp = head;
-    while (temp != NULL) {
-            cout << temp->data << " ";
-            temp = temp->next;
-        }
+    do {
+        cout << temp->data << " ";
+        temp = temp->next;
+    } while (temp != NULL);
+    cout << endl; // Add endl for newline after last node
     }
 
 
@@ -49,6 +51,9 @@ public:
     void push(int data){
         Node* newNode = new Node(data);
         newNode->next = head;
+        if(head!= NULL){
+            head->prev = newNode;
+        }
         head = newNode;
     }
 };
