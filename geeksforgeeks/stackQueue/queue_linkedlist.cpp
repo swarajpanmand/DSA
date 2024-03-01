@@ -28,7 +28,7 @@ public:
             front = rear = newNode;
             return;
         }
-        rear->next = newNode;
+        rear->next = newNode;       //head hamesha first element ko point karta hai
         rear = newNode;
    }
 

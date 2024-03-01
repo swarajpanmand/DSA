@@ -20,16 +20,16 @@ public:
         }
         arr[++rear] =value;
         if(front = -1){
-            front = 0;
+            front = 0;              //front will always be zero for an non-empty queue
         }
     }
         void dequeue(){
-            if(front == -1){
+            if(front == -1 || rear == -1 || front > rear){
                 cout<<"Queue Underflow"<<endl;
                 return;
             }
             if (front == rear){
-                front = rear = -1;
+                front = rear = -1;      //for only one element in the queue
             }
             else{
                 front++;
